@@ -2,9 +2,8 @@ set -x sandbox "/tmp/zoku_sandbox"
 
 . src/utils.fish
 
-function test_fail --on-event test_fail
+function test_fail
 	echo "Test fail: $argv"
-	echo "faaaaaaaaaaail"
 	exit 1
 end
 
@@ -22,7 +21,7 @@ function test_is_dir_empty
 	set t "$test:returns true (0) when directory is empty"
 	begin
 		if not is_dir_empty $sandbox
-			emit test_fail $t
+			test_fail $t
 		end
 	end
 
@@ -31,7 +30,7 @@ function test_is_dir_empty
 		touch $sandbox/foo
 
 		if is_dir_empty $sandbox
-			emit test_fail $t
+			test_fail $t
 		end
 	end
 	
