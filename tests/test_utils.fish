@@ -4,6 +4,7 @@ set -x sandbox "/tmp/zoku_sandbox"
 
 function test_fail --on-event test_fail
 	echo "Test fail: $argv"
+	exit 1
 end
 
 function prepare
